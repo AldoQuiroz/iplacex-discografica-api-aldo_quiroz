@@ -1,0 +1,23 @@
+# Carpetas de compilación
+/build/
+.gradle/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de log
+*.log
+
+# Archivos empaquetados
+*.jar
+*.war
+*.ear
+
+# Archivos temporales
+*.tmp
+*.swp
+
+# Wrapper de Gradle
+!gradle-wrapper.jar
+!gradle-wrapper.properties
