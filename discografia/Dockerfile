@@ -5,10 +5,10 @@ WORKDIR /app
 # Copiamos todo el proyecto al contenedor
 COPY . .
 
-# Corrige formato y permisos del wrapper
-RUN apt-get update && apt-get install -y dos2unix && dos2unix ./gradlew && chmod +x ./gradlew
+# Damos permisos al wrapper
+RUN chmod +x ./gradlew
 
-# Ejecuta el build con el wrapper
+# Ejecutamos el build con el wrapper
 RUN ./gradlew bootJar --no-daemon
 
 # Etapa 2: Ejecución con OpenJDK 21
