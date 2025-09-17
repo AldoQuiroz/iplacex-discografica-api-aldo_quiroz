@@ -5,8 +5,11 @@ WORKDIR /app
 # Copiamos todo el proyecto al contenedor
 COPY . .
 
-# Ejecutamos el build usando bootJar (Spring Boot)
-RUN gradle bootJar --no-daemon
+# Corrige formato y permisos del wrapper
+RUN apt-get update && apt-get install -y dos2unix && dos2unix ./gradlew && chmod +x ./gradlew
+
+# Ejecuta el build con el wrapper
+RUN ./gradlew bootJar --no-daemon
 
 # Etapa 2: Ejecución con OpenJDK 21
 FROM eclipse-temurin:21-jre AS run
